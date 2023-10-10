@@ -56,7 +56,21 @@ def odd_even_dict():
 
     return my_dict
 
-print(odd_even_dict())
+#print(odd_even_dict())
 
+my_dict = {'a': 500, 'b': 200, 'c': 1500, 'd': 20, 'x': 1550, 'v': 260}
+
+def get_boundaries(my_dict):
+    lowest = list(my_dict.values())[0]
+    highest = list(my_dict.values())[0]
+    for key, value in my_dict.items():
+        if value < lowest:
+            lowest = value
+        elif value > highest:
+            highest = value
+
+    return lowest, highest
+
+print(get_boundaries(my_dict))
 
 
