@@ -27,33 +27,27 @@ def task3():
     print(sum(num_list))
     print(sum(num_list)/10)
 
-def calc_neighbours(i,x):
+def calc_neighbours(i,x):  #This is used in task 4
     neighbours = [(i,x-1),(i,x+1),(i-1,x),(i+1,x)]
     if x == 0:
         neighbours.remove((i,x-1))
-    if x == 4:
+    if x == 5:
         neighbours.remove((i,x+1))
     if i == 0:
         neighbours.remove((i-1,x))
-    if i == 4:
+    if i == 2:
         neighbours.remove((i+1,x))
 
     return neighbours
 
 
-
-
 def task4():
-    num_list = [[1, 4, 0, 1, 3],
-                [2, 2, 4, 2, 2],
-                [1, 0, 1, 0, 1],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0]]
+    num_list = [[1, 4, 0, 1, 3, 1], [2, 2, 4, 2, 2, 3], [1, 0, 1, 0, 1, 0]]
     
-    num_list2 = [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
-    for i in range(0,5):
+    num_list2 = [[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
+    for i in range(0,3):
         temp = []
-        for x in range(0,5):
+        for x in range(0,6):
             #check if number 
             temp_num = num_list[i][x]
             neighbours = calc_neighbours(i,x) #returns a list of all the locations of the neighbours of the position
@@ -61,7 +55,7 @@ def task4():
                 n = num_list[location[0]][location[1]]
                 temp_num += n
 
-            num_list2[i][x] = round(temp_num / len(neighbours))
+            num_list2[i][x] = round(temp_num /(len(neighbours)+1))
 
     return num_list2
                 
